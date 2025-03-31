@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO)
 if 'messages' not in st.session_state:
     st.session_state.messages = []
 
-# Function to stream chat response based on selected model
+# Function to stream chat response based on selected model by user
 def stream_chat(model, messages):
     try:
         # Initialize the language model with a timeout
