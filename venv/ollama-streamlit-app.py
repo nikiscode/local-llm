@@ -1,16 +1,12 @@
-
 import streamlit as st
 from llama_index.core.llms import ChatMessage
 import logging
 import time
 from llama_index.llms.ollama import Ollama
-
 logging.basicConfig(level=logging.INFO)
-
 # Initialize chat history in session state if not already present
 if 'messages' not in st.session_state:
     st.session_state.messages = []
-
 # Function to stream chat response based on selected model by user
 def stream_chat(model, messages):
     try:
@@ -31,27 +27,21 @@ def stream_chat(model, messages):
         # Log and re-raise any errors that occur
         logging.error(f"Error during streaming: {str(e)}")
         raise e
-
-
 def main():
     st.title("Chat with LLMs Models")  # Set the title of the Streamlit app
     logging.info("App started")  # Log that the app has started
-
-    # Sidebar for model selection
+   # Sidebar for model selection
     model = st.sidebar.selectbox("Choose a model", ["llama3", "phi3", "mistral"])
     logging.info(f"Model selected: {model}")
-
-    # Prompt for user input and save to chat history
+   # Prompt for user input and save to chat history
     if prompt := st.chat_input("Your question"):
         st.session_state.messages.append({"role": "user", "content": prompt})
         logging.info(f"User input: {prompt}")
-
         # Display the user's query
         for message in st.session_state.messages:
             with st.chat_message(message["role"]):
                 st.write(message["content"])
-
-        # Generate a new response if the last message is not from the assistant
+                # Generate a new response if the last message is not from the assistant
         if st.session_state.messages[-1]["role"] != "assistant":
             with st.chat_message("assistant"):
                 start_time = time.time()  # Start timing the response generation
