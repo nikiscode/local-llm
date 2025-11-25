@@ -1,4 +1,4 @@
-﻿Introduction
+ ﻿Introduction
 Streamlit is a powerful tool for creating web applications with minimal effort, and combining it with language models like Ollama allows for the creation of interactive, AI-powered applications. We’ll walk through setting up the environment, building the chat interface, and integrating the Ollama model to handle user queries.
 1. Prerequisites
 a. Python: Ensure you have Python 3.7 or later installed. You can download it from python.org.
@@ -29,3 +29,4 @@ This is the main function that sets up the Streamlit interface.
 To run the streamlit app “ollama-streamlit-app.py”, type in your terminal the following shell command:
 streamlit run ollama-streamlit-app.py
 You can evaluate which models are faster and provide better answers by testing and comparing their response times and accuracy.
+
